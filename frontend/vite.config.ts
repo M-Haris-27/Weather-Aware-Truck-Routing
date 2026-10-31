@@ -6,6 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     // In dev the browser talks to Vite, which forwards /api to Django (no CORS needed).
+    // In production, VITE_API_URL is used directly (no proxy).
     proxy: { "/api": "http://localhost:8000" },
   },
   build: {
