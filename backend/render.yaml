@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: weather-routing-api
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_DEBUG
+        value: 0
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: MAPBOX_ACCESS_TOKEN
+        sync: false  # You'll need to add this manually in Render dashboard
+      - key: ROUTING_PROVIDER
+        value: mapbox
+      - key: GEOCODING_PROVIDER
+        value: mapbox
+      - key: WEATHER_PROVIDER
+        value: open_meteo
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://your-app.vercel.app  # Update this after deploying frontend
+      - key: THROTTLE_ANALYZE
+        value: 30/min
+      - key: THROTTLE_GEOCODE
+        value: 120/min
