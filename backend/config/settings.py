@@ -23,6 +23,7 @@ if os.environ.get("RENDER"):
     ALLOWED_HOSTS.append(".onrender.com")
 
 INSTALLED_APPS = [
+    "django.contrib.staticfiles",  # Required for collectstatic command
     "corsheaders",
     "rest_framework",
     "routing_app",
